@@ -68,11 +68,11 @@ class MaximalUpdateParametrizationMetadata(
         """Unbox the parameter or nested metadata."""
         return self.value
 
-    def replace_boxed(self, value: nn.meta.AxisMetadata[chex.Array] | chex.Array) -> :
+    def replace_boxed(self, value: nn.meta.AxisMetadata[chex.Array] | chex.Array):
         """Replace the boxed value."""
         return self.replace(value=value)
 
-    def add_axis(self, index: int, params: dict[Any, Any]) -> :
+    def add_axis(self, index: int, params: dict[Any, Any]):
         """Add an axis, this is called through lifted transforms and will always be finite dimensional."""
         del params
         dims = list(self.dims)
@@ -134,7 +134,7 @@ tree_map_mupped = functools.partial(
 )
 
 
-@typing.dataclass_transform(kw_only_default=True)
+# @typing.dataclass_transform(kw_only_default=True)
 class Module(nn.Module):
     """Flax Maximal Update Parametrization (μP) module."""
 
