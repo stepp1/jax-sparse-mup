@@ -41,7 +41,7 @@ optim = optax.chain(
 
 import functools
 import typing
-from typing import Any, Callable, Mapping, Self, TypeVar
+from typing import Any, Callable, Mapping, TypeVar
 
 import chex
 import jax
@@ -68,18 +68,18 @@ class MaximalUpdateParametrizationMetadata(
         """Unbox the parameter or nested metadata."""
         return self.value
 
-    def replace_boxed(self, value: nn.meta.AxisMetadata[chex.Array] | chex.Array) -> Self:
+    def replace_boxed(self, value: nn.meta.AxisMetadata[chex.Array] | chex.Array) -> :
         """Replace the boxed value."""
         return self.replace(value=value)
 
-    def add_axis(self, index: int, params: dict[Any, Any]) -> Self:
+    def add_axis(self, index: int, params: dict[Any, Any]) -> :
         """Add an axis, this is called through lifted transforms and will always be finite dimensional."""
         del params
         dims = list(self.dims)
         dims.insert(index, None)
         return self.replace(dims=tuple(dims))
 
-    def remove_axis(self, index: int, params: dict[Any, Any]) -> Self:
+    def remove_axis(self, index: int, params: dict[Any, Any]):
         """Remove an axis, this is called through lifted transforms and will always be finite dimensional."""
         del params
         dims = list(self.dims)
